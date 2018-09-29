@@ -3,8 +3,6 @@ package com.example.layout_module;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,21 +13,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.Beans.Charge;
-import com.example.layout_module.Beans.ChargeType;
-import com.example.layout_module.Beans.House;
-import com.example.layout_module.Beans.LinkToServer;
+import com.example.layout_module.beans.Charge;
+import com.example.layout_module.beans.ChargeType;
+import com.example.layout_module.beans.LinkToServer;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +32,6 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class AddBills extends AppCompatActivity {
 

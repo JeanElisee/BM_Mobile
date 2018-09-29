@@ -18,11 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.Beans.AddBuilding;
-import com.example.layout_module.Beans.LinkToServer;
-import com.example.layout_module.Beans.Owner;
+import com.example.layout_module.beans.AddBuilding;
+import com.example.layout_module.beans.LinkToServer;
+import com.example.layout_module.beans.Owner;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;

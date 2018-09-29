@@ -1,7 +1,4 @@
-package com.example.layout_module.Beans;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.example.layout_module.beans;
 
 import java.io.Serializable;
 

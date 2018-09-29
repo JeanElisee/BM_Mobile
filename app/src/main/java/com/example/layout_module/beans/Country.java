@@ -1,4 +1,4 @@
-package com.example.layout_module.Beans;
+package com.example.layout_module.beans;
 
 public class Country {
     private String iso_code;

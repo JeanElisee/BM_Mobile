@@ -17,10 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.Beans.Country;
-import com.example.layout_module.Beans.LinkToServer;
-import com.example.layout_module.Beans.Owner;
-import com.example.layout_module.Beans.Tenant;
+import com.example.layout_module.beans.Country;
+import com.example.layout_module.beans.LinkToServer;
+import com.example.layout_module.beans.Owner;
+import com.example.layout_module.beans.Tenant;
 
 import org.json.JSONException;
 import org.json.JSONObject;

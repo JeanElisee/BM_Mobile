@@ -1,8 +1,6 @@
 package com.example.layout_module;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,10 +14,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.Beans.Building;
-import com.example.layout_module.Beans.Charge;
-import com.example.layout_module.Beans.LinkToServer;
-import com.example.layout_module.Beans.Owner;
+import com.example.layout_module.beans.Building;
+import com.example.layout_module.beans.Charge;
+import com.example.layout_module.beans.LinkToServer;
+import com.example.layout_module.beans.Owner;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

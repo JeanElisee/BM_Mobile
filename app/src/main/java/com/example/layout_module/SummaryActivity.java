@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.layout_module.Beans.Building;
-import com.example.layout_module.Beans.Charge;
-import com.example.layout_module.Beans.House;
+import com.example.layout_module.beans.Building;
+import com.example.layout_module.beans.Charge;
+import com.example.layout_module.beans.House;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

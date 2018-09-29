@@ -21,9 +21,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.Beans.Country;
-import com.example.layout_module.Beans.LinkToServer;
-import com.example.layout_module.Beans.Tenant;
+import com.example.layout_module.beans.Country;
+import com.example.layout_module.beans.LinkToServer;
+import com.example.layout_module.beans.Tenant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

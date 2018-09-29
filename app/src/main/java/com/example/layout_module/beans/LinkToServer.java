@@ -1,4 +1,4 @@
-package com.example.layout_module.Beans;
+package com.example.layout_module.beans;
 
 public final class LinkToServer {
     public static final class LinkDetails {
@@ -6,10 +6,10 @@ public final class LinkToServer {
 //       private static final String IP_ADDRESS = "192.168.0.14";
 
 //      ======< My HOME >==========
-      // private static final String IP_ADDRESS = "172.20.10.2";
+       private static final String IP_ADDRESS = "192.168.100.253";
 
 //        ======< COLLEGE >=========
-      private static final String IP_ADDRESS = "10.0.11.47";
+//      private static final String IP_ADDRESS = "10.0.11.47";
 
         private static final String PORT = "9112";
 
