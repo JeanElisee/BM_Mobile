@@ -19,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.layout_module.beans.Country;
 import com.example.layout_module.beans.LinkToServer;
 import com.example.layout_module.beans.Owner;
-import com.example.layout_module.beans.Session;
 import com.example.layout_module.beans.Tenant;
 
 import org.json.JSONException;
@@ -31,7 +30,6 @@ public class Login extends AppCompatActivity {
     RadioButton tenant, owner;
     EditText mailId, password;
     String email, password_text;
-    private Session session;//global variable
     public static final String PREF_NAME="login_information";
 
     @Override
@@ -44,8 +42,6 @@ public class Login extends AppCompatActivity {
         sign_up = findViewById(R.id.sign_up);
         mailId = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
-
-        session = new Session(getApplicationContext()); //in oncreate
 
 
         login.setOnClickListener(new View.OnClickListener() {

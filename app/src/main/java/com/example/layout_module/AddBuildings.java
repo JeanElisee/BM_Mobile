@@ -20,7 +20,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.layout_module.beans.Building;
 import com.example.layout_module.beans.LinkToServer;
 import com.example.layout_module.beans.Owner;
-import com.example.layout_module.beans.Session;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -32,7 +31,6 @@ import java.util.Map;
 import static java.lang.Integer.valueOf;
 
 public class AddBuildings extends AppCompatActivity {
-    private Session session;//global variable
 
     Button addBuilding;
     //    LinearLayout linearLayout;

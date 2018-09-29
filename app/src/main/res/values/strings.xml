@@ -13,5 +13,13 @@
     <string name="no_of_floor">No of Floor</string>
     <string name="add">Add</string>
     <string name="cancel">Cancel</string>
+    <string name="username">Username</string>
+    <string name="buildings">Buildings</string>
+    <string name="bills">Bills</string>
+    <string name="tenant">Tenant</string>
+    <string name="house">House</string>
+    <string name="diagrams">Diagrams</string>
+    <string name="owner_photo">Owner Photo</string>
+    <string name="place_holder">Place holder</string>
 
 </resources>
