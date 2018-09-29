@@ -18,17 +18,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 public class TenantDashboard extends AppCompatActivity implements View.OnClickListener {
-
     ImageView profile;
-    FrameLayout bills,sample1,sample2,inquiry;
+    FrameLayout bills, sample1, sample2, inquiry;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_dashboard);
-        bills=(FrameLayout)findViewById(R.id.image1);
-        sample1=(FrameLayout)findViewById(R.id.image2);
-        sample2=(FrameLayout)findViewById(R.id.image3);
-        inquiry=(FrameLayout)findViewById(R.id.image4);
+        bills = (FrameLayout) findViewById(R.id.image1);
+        sample1 = (FrameLayout) findViewById(R.id.image2);
+        sample2 = (FrameLayout) findViewById(R.id.image3);
+        inquiry = (FrameLayout) findViewById(R.id.image4);
 
         bills.setOnClickListener(this);
         sample1.setOnClickListener(this);
@@ -39,7 +39,7 @@ public class TenantDashboard extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        Intent i=new Intent(this,Actions.class);
+        Intent i = new Intent(this, Actions.class);
         startActivity(i);
     }
 }

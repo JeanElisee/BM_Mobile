@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
     EditText mailId, password;
     String email, password_text;
 
-    public static final String PREF_NAME="ownertenantPref";
+    public static final String PREF_NAME = "ownertenantPref";
 
 
     @Override
@@ -69,20 +69,19 @@ public class Login extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, Register.class);
+                Intent intent = new Intent(Login.this, AddBuildings.class);
                 startActivity(intent);
             }
         });
     }
 
     public void JsonParseTenant(String url, final String whichOne) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (whichOne == "tenant") {
                     try {
-//                  ============< Take Tenant information >===============
+//                      ============< Take Tenant information >===============
                         Tenant tenant = new Tenant();
 
                         tenant.setId(response.getInt("id"));
@@ -96,7 +95,7 @@ public class Login extends AppCompatActivity {
                         tenant.setUsername(response.getString("username"));
                         tenant.setPassword(response.getString("password"));
 
-//                  ============< Take Country information >=============
+//                      ============< Take Country information >=============
                         JSONObject countryJson = response.getJSONObject("tenantCountry");
 
                         Country country = new Country();
@@ -105,17 +104,19 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-                        Log.d("JSON is ", tenant.toString() + "; " + country.toString());
+//                      Log.d("JSON is ", tenant.toString() + "; " + country.toString());
 
-                        Toast.makeText(getApplicationContext(), "Tenant successfully logged in", Toast.LENGTH_SHORT).show();
+//                      Toast.makeText(getApplicationContext(), "Tenant successfully logged in", Toast.LENGTH_SHORT).show();
 
-                    //session for id//
+                        //session for id//
 
-                   SharedPreferences sharedPreferences =  getSharedPreferences(PREF_NAME, 0);
-                   SharedPreferences.Editor editor = sharedPreferences.edit();
-                   editor.putString("user_id", response.getString("id"));
-                   Toast.makeText(Login.this,"Id is"+response.getInt("id"),Toast.LENGTH_LONG).show();
-                   editor.apply();
+                        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("user_id", response.getString("id"));
+
+//                      Toast.makeText(Login.this,"Id is"+response.getInt("id"),Toast.LENGTH_LONG).show();
+
+                        editor.apply();
 
                         Intent profile_activity = new Intent(getApplicationContext(), TenantDashboard.class);
                         startActivity(profile_activity);
@@ -124,7 +125,7 @@ public class Login extends AppCompatActivity {
                     }
                 } else if (whichOne == "owner") {
                     try {
-//                  ============< Take Tenant information >===============
+//                      ============< Take Tenant information >===============
                         Owner owner = new Owner();
 
                         owner.setId(response.getInt("id"));
@@ -138,7 +139,7 @@ public class Login extends AppCompatActivity {
                         owner.setUsername(response.getString("username"));
                         owner.setPassword(response.getString("password"));
 
-//                  ============< Take Country information >=============
+//                      ============< Take Country information >=============
                         JSONObject countryJson = response.getJSONObject("ownerCountry");
 
                         Country country = new Country();
@@ -147,14 +148,16 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-                        Log.d("JSON is ", tenant.toString() + "; " + country.toString());
+//                      Log.d("JSON is ", tenant.toString() + "; " + country.toString());
 
                         Toast.makeText(getApplicationContext(), "Owner successfully logged in", Toast.LENGTH_SHORT).show();
 
                         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("user_id", response.getString("id"));
-                        Toast.makeText(Login.this,"Id is"+response.getString("id"),Toast.LENGTH_LONG).show();
+
+//                      Toast.makeText(Login.this,"Id is"+response.getString("id"),Toast.LENGTH_LONG).show();
+
                         editor.apply();
 
                         Intent profile_activity = new Intent(getApplicationContext(), OwnerDashboard.class);
@@ -163,8 +166,6 @@ public class Login extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override
