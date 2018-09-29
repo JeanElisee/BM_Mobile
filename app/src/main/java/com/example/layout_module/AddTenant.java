@@ -14,6 +14,7 @@ public class AddTenant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_tenant);
         search_tenant=findViewById(R.id.search_tenant);
+
         search_tenant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
