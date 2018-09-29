@@ -1,0 +1,13 @@
+<resources>
+    <string name="dashboard">Dashboard</string>
+    <string name="tenantdashboard">Tenant Dashboard</string>
+    <string name="public_id">Public ID:</string>
+    <string name="address">Address:</string>
+    <string name="welcome">Welcome</string>
+    <string name="para">See diagrams of how useful the application for you</string>
+    <string name="billpaid">Bill paid,you will redirected to the dashboard page in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

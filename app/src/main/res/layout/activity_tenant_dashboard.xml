@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tenantprofile"
+    tools:context=".TenantDashboard"
+    tools:layout_editor_absoluteY="81dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColor"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/tenantdashboard"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/user"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize"
+        android:gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:text="Sample"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="@string/public_id" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:padding="2dp"
+            android:text="PT001" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="@string/address" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:padding="5dp"
+            android:text="Koramangala signal" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/rectangle"/>
+
+</LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="260dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/image1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bills"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bills"
+                android:layout_marginTop="110dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/image2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_box"/>
+
+         <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sample"
+                android:layout_marginTop="110dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/image3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image1">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_box"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sample"
+                android:layout_marginTop="110dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/image4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image2"
+            android:layout_toRightOf="@id/image3">
+
+            <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/inquiry"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inquiry"
+                android:layout_marginTop="110dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize"
+                android:gravity="center_horizontal"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+    </RelativeLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
