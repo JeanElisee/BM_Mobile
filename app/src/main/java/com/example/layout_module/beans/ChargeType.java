@@ -1,9 +1,6 @@
 package com.example.layout_module.beans;
 
-import java.io.Serializable;
-
-public class ChargeType implements Serializable
-{
+public class ChargeType {
     public int id;
     public String name;
 
@@ -14,10 +11,6 @@ public class ChargeType implements Serializable
         this.id = id;
         this.name = name;
     }
-
-
-
-
 
     public int getId() {
         return id;
@@ -42,6 +35,4 @@ public class ChargeType implements Serializable
                 ", name='" + name + '\'' +
                 '}';
     }
-
-
 }

@@ -1,8 +1,6 @@
 package com.example.layout_module.beans;
 
-import java.io.Serializable;
-
-public class Charge implements Serializable {
+public class Charge {
 
     private int id;
     private String amount;
@@ -14,7 +12,6 @@ public class Charge implements Serializable {
     private House house;
 
     public Charge() {
-        super();
     }
 
     public Charge(int id, String amount, String lastDate, boolean isPaid, String addedOn, String paidOn, ChargeType chargeType, House house) {
@@ -27,8 +24,6 @@ public class Charge implements Serializable {
         this.chargeType = chargeType;
         this.house = house;
     }
-
-
 
     public int getId() {
         return id;
@@ -94,5 +89,17 @@ public class Charge implements Serializable {
         this.house = house;
     }
 
-
+    @Override
+    public String toString() {
+        return "Charge{" +
+                "id=" + id +
+                ", amount='" + amount + '\'' +
+                ", lastDate='" + lastDate + '\'' +
+                ", isPaid=" + isPaid +
+                ", addedOn='" + addedOn + '\'' +
+                ", paidOn='" + paidOn + '\'' +
+                ", chargeType=" + chargeType +
+                ", house=" + house +
+                '}';
+    }
 }

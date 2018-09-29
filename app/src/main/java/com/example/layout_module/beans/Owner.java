@@ -1,8 +1,6 @@
 package com.example.layout_module.beans;
 
-import java.io.Serializable;
-
-public class Owner implements Serializable {
+public class Owner{
     private int id;
     private String firstName;
     private String lastName;
@@ -113,5 +111,23 @@ public class Owner implements Serializable {
 
     public void setOwnerCountry(Country ownerCountry) {
         this.ownerCountry = ownerCountry;
+    }
+
+    @Override
+    public String toString() {
+        return "Owner{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", mailId='" + mailId + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", registrationDate='" + registrationDate + '\'' +
+                ", address='" + address + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", ownerCountry=" + ownerCountry +
+                '}';
     }
 }

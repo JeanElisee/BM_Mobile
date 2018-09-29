@@ -15,7 +15,6 @@ public class House {
     private List<Charge> charges;
 
     public House() {
-        super();
     }
 
     public House(int id, String doorNo, String floorNo, String rentAmount, String deposit, int occupationType, Building building, HouseType houseType, List<Charge> charges) {
@@ -101,5 +100,20 @@ public class House {
 
     public void setCharges(List<Charge> charges) {
         this.charges = charges;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "id=" + id +
+                ", doorNo='" + doorNo + '\'' +
+                ", floorNo='" + floorNo + '\'' +
+                ", rentAmount='" + rentAmount + '\'' +
+                ", deposit='" + deposit + '\'' +
+                ", occupationType=" + occupationType +
+                ", building=" + building +
+                ", houseType=" + houseType +
+                ", charges=" + charges +
+                '}';
     }
 }

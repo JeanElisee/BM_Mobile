@@ -1,4 +1,3 @@
-
 package com.example.layout_module;
 
 import android.content.Context;
@@ -31,10 +30,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ProductViewHol
     private List<Charge> chargeList;
 
     //getting the context and product list with constructor
-    public CardAdapter(Context mCtx, List<Building> buildingList,List<Charge> chargeList) {
+    public CardAdapter(Context mCtx, List<Building> buildingList, List<Charge> chargeList) {
         this.mCtx = mCtx;
-        this.buildingList=buildingList;
-        this.chargeList=chargeList;
+        this.buildingList = buildingList;
+        this.chargeList = chargeList;
     }
 
     @Override
@@ -48,25 +47,27 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ProductViewHol
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, int position) {
         //getting the product of the specified position
-        final Bundle bundle=new Bundle();
-        final Building building=buildingList.get(position);
-        final Charge charge=chargeList.get(0);
+        final Bundle bundle = new Bundle();
+        final Building building = buildingList.get(position);
+        final Charge charge = chargeList.get(0);
         //binding the data with the viewholder views
         holder.textViewTitle.setText(building.getName());
-        holder.textViewFloor.setText("" + building.getNoFloor());
+        holder.textViewFloor.setText(building.getNoFloor());
         holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(R.drawable.house));
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bundle.putString("floornum",holder.textViewFloor.getText().toString());
-                Intent intent=new Intent(mCtx,SelectHouse.class);
+
+                bundle.putString("floornum", holder.textViewFloor.getText().toString());
+                Intent intent = new Intent(mCtx, SelectHouse.class);
                 //intent.putExtra("buildingObject",building);
                 //intent.putExtra("chargeObject",  charge);
-                final SharedPreferences  mPrefs = mCtx.getSharedPreferences(AddBills.PREF_NAME,MODE_PRIVATE);
+                final SharedPreferences mPrefs = mCtx.getSharedPreferences(AddBills.PREF_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
                 Gson gson = new Gson();
                 String Chargejson = gson.toJson(charge);
-                String Buildingjson= gson.toJson(building);
+                String Buildingjson = gson.toJson(building);
                 prefsEditor.putString("chargeObject", Chargejson);
                 prefsEditor.putString("buildingObject", Buildingjson);
                 prefsEditor.apply();
@@ -86,14 +87,14 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ProductViewHol
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewTitle,textViewFloor;
+        TextView textViewTitle, textViewFloor;
         ImageView imageView;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
 
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
-            textViewFloor=itemView.findViewById(R.id.textViewFloor);
+            textViewFloor = itemView.findViewById(R.id.textViewFloor);
             imageView = itemView.findViewById(R.id.imageView);
 
         }

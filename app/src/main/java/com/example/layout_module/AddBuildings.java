@@ -18,7 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.layout_module.beans.AddBuilding;
+import com.example.layout_module.beans.Building;
 import com.example.layout_module.beans.LinkToServer;
 import com.example.layout_module.beans.Owner;
 import com.google.gson.Gson;
@@ -33,50 +33,51 @@ public class AddBuildings extends AppCompatActivity {
 
     Button update;
     LinearLayout linearLayout;
-    EditText name,floor,address;
-    String TAG=AddBuildings.class.getSimpleName();
+    EditText name, floor, address;
+    String TAG = AddBuildings.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_buildings);
-        linearLayout=(LinearLayout) findViewById(R.id.container_layout);
-        name=findViewById(R.id.name);
-        floor=findViewById(R.id.floor);
-        address=findViewById(R.id.address);
+        linearLayout = (LinearLayout) findViewById(R.id.container_layout);
+        name = findViewById(R.id.name);
+        floor = findViewById(R.id.floor);
+        address = findViewById(R.id.address);
 
-        update=findViewById(R.id.update);
+        update = findViewById(R.id.update);
 
         //session id//
-        SharedPreferences sharedPreferences=getSharedPreferences(Login.PREF_NAME,0);
-        final int user_id=sharedPreferences.getInt("user_id",1);
+        SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
+        final int user_id = sharedPreferences.getInt("user_id", 1);
 
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 linearLayout.removeAllViews();
-                SearchHouseFragment fragmentOne=new SearchHouseFragment();
-                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container_layout,fragmentOne).commit();
+                SearchHouseFragment fragmentOne = new SearchHouseFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container_layout, fragmentOne).commit();
 
-                AddBuilding addBuilding=new AddBuilding();
+                Building building = new Building();
 
-                addBuilding.setName(name.getText().toString());
-                addBuilding.setNo_floor(floor.getText().toString());
-                addBuilding.setAddress(address.getText().toString());
+                building.setName(name.getText().toString());
+                building.setNoFloor(Integer.valueOf(floor.getText().toString()));
+                building.setAddress(address.getText().toString());
 
-                Owner owner=new Owner();
+                Owner owner = new Owner();
                 owner.setId(user_id);
-                addBuilding.setOwner(owner);
+                building.setOwner(owner);
 
-                Gson gson=new Gson();
-                String gsonTojson=gson.toJson(addBuilding);
+                Gson gson = new Gson();
+                String gsonTojson = gson.toJson(building);
 
                 JSONObject jsonObject = new JSONObject();
                 try {
                     //Conversion to be verified
                     jsonObject = new JSONObject(gsonTojson);
-                    Log.d(TAG,jsonObject.toString());
+                    Log.d(TAG, jsonObject.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

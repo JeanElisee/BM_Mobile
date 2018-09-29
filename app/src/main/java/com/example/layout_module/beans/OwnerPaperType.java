@@ -1,14 +1,15 @@
 package com.example.layout_module.beans;
 
-public class HouseType {
+import java.io.Serializable;
+
+public class OwnerPaperType {
     private int id;
     private String name;
 
-    public HouseType() {
+    public OwnerPaperType() {
     }
 
-    public HouseType(int id, String name) {
-        super();
+    public OwnerPaperType(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -31,7 +32,7 @@ public class HouseType {
 
     @Override
     public String toString() {
-        return "HouseType{" +
+        return "OwnerPaperType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

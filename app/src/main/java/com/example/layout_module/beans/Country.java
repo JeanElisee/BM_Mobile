@@ -8,6 +8,12 @@ public class Country {
     public Country() {
     }
 
+    public Country(String iso_code, String name, String isd_code) {
+        this.iso_code = iso_code;
+        this.name = name;
+        this.isd_code = isd_code;
+    }
+
     public String getIso_code() {
         return iso_code;
     }

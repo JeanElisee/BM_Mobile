@@ -1,8 +1,6 @@
 package com.example.layout_module.beans;
 
-import java.io.Serializable;
-
-public class Building implements Serializable {
+public class Building {
 
     private int id;
     private String name;
@@ -12,7 +10,6 @@ public class Building implements Serializable {
     private Owner owner;
 
     public Building() {
-        super();
     }
 
     public Building(int id, String name, int noFloor, String addedOn, String address, Owner owner) {
