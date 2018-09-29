@@ -5,16 +5,19 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
 
-public class OwnerDashboard extends AppCompatActivity implements View.OnClickListener
+import com.example.layout_module.beans.Session;
 
-{
+public class OwnerDashboard extends AppCompatActivity implements View.OnClickListener {
+    private Session session;//global variable
 
     CardView card1, card2, card3, card4;
     public static String MYPREF = "pref";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +28,15 @@ public class OwnerDashboard extends AppCompatActivity implements View.OnClickLis
         card3 = (CardView) findViewById(R.id.card3);
         card4 = (CardView) findViewById(R.id.card4);
 
-        //Session building,house //
-
-
         card1.setOnClickListener(this);
         card2.setOnClickListener(this);
         card3.setOnClickListener(this);
         card4.setOnClickListener(this);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
+        int user_id = sharedPreferences.getInt("user_id", 1);
+
+        Toast.makeText(getApplicationContext(), "" + user_id, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -41,6 +46,7 @@ public class OwnerDashboard extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.card1:
                 bundle.putString("activity_to_open_next", "building");
+
                 break;
             case R.id.card2:
                 bundle.putString("activity_to_open_next", "bill");

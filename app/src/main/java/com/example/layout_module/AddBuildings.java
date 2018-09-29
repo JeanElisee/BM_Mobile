@@ -2,7 +2,6 @@ package com.example.layout_module;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.layout_module.beans.Building;
 import com.example.layout_module.beans.LinkToServer;
 import com.example.layout_module.beans.Owner;
+import com.example.layout_module.beans.Session;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -29,42 +29,41 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddBuildings extends AppCompatActivity {
+import static java.lang.Integer.valueOf;
 
-    Button update;
-    LinearLayout linearLayout;
-    EditText name, floor, address;
+public class AddBuildings extends AppCompatActivity {
+    private Session session;//global variable
+
+    Button addBuilding;
+    //    LinearLayout linearLayout;
+    EditText txtBuildingName, txtBuildingNofloor, txtBuildingAddress;
     String TAG = AddBuildings.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_buildings);
-        linearLayout = (LinearLayout) findViewById(R.id.container_layout);
-        name = findViewById(R.id.name);
-        floor = findViewById(R.id.floor);
-        address = findViewById(R.id.address);
+//        linearLayout = (LinearLayout) findViewById(R.id.container_layout);
 
-        update = findViewById(R.id.update);
+        txtBuildingName = findViewById(R.id.txt_building_name);
+        txtBuildingNofloor = findViewById(R.id.txt_building_no_floor);
+        txtBuildingAddress = findViewById(R.id.txt_building_address);
 
-        //session id//
-        SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
-        final int user_id = sharedPreferences.getInt("user_id", 1);
+        addBuilding = findViewById(R.id.add_building_to_db);
 
-
-        update.setOnClickListener(new View.OnClickListener() {
+        addBuilding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                linearLayout.removeAllViews();
-                SearchHouseFragment fragmentOne = new SearchHouseFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.container_layout, fragmentOne).commit();
+                SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
+                int user_id = sharedPreferences.getInt("user_id", 1);
+
+                Toast.makeText(getApplicationContext(), "" + user_id, Toast.LENGTH_SHORT).show();
 
                 Building building = new Building();
 
-                building.setName(name.getText().toString());
-                building.setNoFloor(Integer.valueOf(floor.getText().toString()));
-                building.setAddress(address.getText().toString());
+                building.setName(txtBuildingName.getText().toString());
+                building.setNoFloor(Integer.valueOf(txtBuildingNofloor.getText().toString()));
+                building.setAddress(txtBuildingAddress.getText().toString());
 
                 Owner owner = new Owner();
                 owner.setId(user_id);

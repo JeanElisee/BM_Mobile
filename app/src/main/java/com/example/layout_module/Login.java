@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -20,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.layout_module.beans.Country;
 import com.example.layout_module.beans.LinkToServer;
 import com.example.layout_module.beans.Owner;
+import com.example.layout_module.beans.Session;
 import com.example.layout_module.beans.Tenant;
 
 import org.json.JSONException;
@@ -31,9 +31,8 @@ public class Login extends AppCompatActivity {
     RadioButton tenant, owner;
     EditText mailId, password;
     String email, password_text;
-
-    public static final String PREF_NAME = "ownertenantPref";
-
+    private Session session;//global variable
+    public static final String PREF_NAME="login_information";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +45,8 @@ public class Login extends AppCompatActivity {
         mailId = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
 
+        session = new Session(getApplicationContext()); //in oncreate
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,13 +56,11 @@ public class Login extends AppCompatActivity {
 
                 if (tenant.isChecked()) {
                     String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "tenant/login/" + email + "/" + password_text;
-                    Log.d("URL ", url);
-                    JsonParseTenant(url, "tenant");
+                    JsonParse(url, "tenant");
 
                 } else if (owner.isChecked()) {
                     String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "owner/login/" + email + "/" + password_text;
-                    Log.d("URL ", url);
-                    JsonParseTenant(url, "owner");
+                    JsonParse(url, "owner");
                 }
             }
         });
@@ -75,11 +74,11 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void JsonParseTenant(String url, final String whichOne) {
+    public void JsonParse(String url, final String whichOne) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                if (whichOne == "tenant") {
+                if (whichOne.equals("tenant")) {
                     try {
 //                      ============< Take Tenant information >===============
                         Tenant tenant = new Tenant();
@@ -104,26 +103,19 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-//                      Log.d("JSON is ", tenant.toString() + "; " + country.toString());
-
-//                      Toast.makeText(getApplicationContext(), "Tenant successfully logged in", Toast.LENGTH_SHORT).show();
-
-                        //session for id//
-
                         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("user_id", response.getString("id"));
-
-//                      Toast.makeText(Login.this,"Id is"+response.getInt("id"),Toast.LENGTH_LONG).show();
+                        editor.putInt("user_id", tenant.getId());
 
                         editor.apply();
 
-                        Intent profile_activity = new Intent(getApplicationContext(), TenantDashboard.class);
-                        startActivity(profile_activity);
+                        Intent intent = new Intent(getApplicationContext(), TenantDashboard.class);
+
+                        startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                } else if (whichOne == "owner") {
+                } else if (whichOne.equals("owner")) {
                     try {
 //                      ============< Take Tenant information >===============
                         Owner owner = new Owner();
@@ -148,15 +140,9 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-//                      Log.d("JSON is ", tenant.toString() + "; " + country.toString());
-
-                        Toast.makeText(getApplicationContext(), "Owner successfully logged in", Toast.LENGTH_SHORT).show();
-
                         SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("user_id", response.getString("id"));
-
-//                      Toast.makeText(Login.this,"Id is"+response.getString("id"),Toast.LENGTH_LONG).show();
+                        editor.putInt("user_id", owner.getId());
 
                         editor.apply();
 

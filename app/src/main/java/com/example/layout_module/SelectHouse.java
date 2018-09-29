@@ -48,7 +48,7 @@ public class SelectHouse extends AppCompatActivity {
         next=findViewById(R.id.next);
         floor_num=new ArrayList<>();
         data=getIntent().getExtras();
-        prefs=getSharedPreferences(Login.PREF_NAME,0);
+//        prefs=getSharedPreferences(Login.PREF_NAME,0);
         if(data!=null)
         {
             floor_num.add("Ground Floor");

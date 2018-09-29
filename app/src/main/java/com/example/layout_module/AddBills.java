@@ -40,7 +40,7 @@ public class AddBills extends AppCompatActivity {
     TextView lastdate;
     Spinner spinner;
     EditText amount_box;
-    public static String DETAILS="pref";
+    public static String DETAILS = "pref";
     public static final String PREF_NAME = "DATA";
     String name;
     int type_id;
@@ -49,36 +49,37 @@ public class AddBills extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bills);
-        next=findViewById(R.id.next);
-        linearLayout=findViewById(R.id.container);
-        lastdate=findViewById(R.id.lastdate);
-        spinner=findViewById(R.id.charge_type);
-        amount_box=findViewById(R.id.amount);
+
+        next = findViewById(R.id.next);
+        linearLayout = findViewById(R.id.container);
+        lastdate = findViewById(R.id.lastdate);
+        spinner = findViewById(R.id.charge_type);
+        amount_box = findViewById(R.id.amount);
 
 
-        SharedPreferences sharedPreferences=getSharedPreferences(DETAILS,0);
-        final SharedPreferences sharedPreferences1=getSharedPreferences(Login.PREF_NAME,0);
-        SharedPreferences.Editor editor=sharedPreferences.edit();
+        SharedPreferences sharedPreferences = getSharedPreferences(DETAILS, 0);
+//        final SharedPreferences sharedPreferences1 = getSharedPreferences(Login.PREF_NAME, 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("type_id", String.valueOf(type_id));
-        editor.putString("lastdate",lastdate.getText().toString());
-        editor.putString("amount",amount_box.getText().toString());
+        editor.putString("lastdate", lastdate.getText().toString());
+        editor.putString("amount", amount_box.getText().toString());
         editor.apply();
 
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Charge charge=new Charge();
-                charge.setId(Integer.parseInt(sharedPreferences1.getString("user_id","")));
+                Charge charge = new Charge();
+//                charge.setId(Integer.parseInt(sharedPreferences1.getString("user_id", "")));
                 charge.setLastDate(lastdate.getText().toString());
                 charge.setAmount(amount_box.getText().toString());
-                ChargeType chargeType=new ChargeType();
+                ChargeType chargeType = new ChargeType();
                 chargeType.setId(spinner.getId());
                 chargeType.setName(spinner.getSelectedItem().toString());
                 charge.setChargeType(chargeType);
 
-                Intent intent=new Intent(AddBills.this,SelectBuilding.class);
-                final SharedPreferences  mPrefs = getSharedPreferences(PREF_NAME,MODE_PRIVATE);
+                Intent intent = new Intent(AddBills.this, SelectBuilding.class);
+                final SharedPreferences mPrefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
                 Gson gson = new Gson();
                 String json = gson.toJson(charge);
@@ -107,23 +108,22 @@ public class AddBills extends AppCompatActivity {
             }
         });
 
-        final ArrayList<String> charge_type=new ArrayList<String>();
-        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/charge/type/" ;
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        final ArrayList<String> charge_type = new ArrayList<String>();
+        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/charge/type/";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-               for(int i=0;i<response.length();i++)
-               {
-                   try {
-                       JSONObject jsonObject=response.getJSONObject(i);
-                       name=jsonObject.getString("name");
-                       type_id=jsonObject.getInt("id");
-                       charge_type.add(name);
-                   } catch (JSONException e) {
-                       e.printStackTrace();
-                   }
-               }
-                ArrayAdapter<String> charge_type_adapter=new ArrayAdapter<String>(AddBills.this,android.R.layout.simple_spinner_dropdown_item,charge_type);
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        name = jsonObject.getString("name");
+                        type_id = jsonObject.getInt("id");
+                        charge_type.add(name);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                ArrayAdapter<String> charge_type_adapter = new ArrayAdapter<String>(AddBills.this, android.R.layout.simple_spinner_dropdown_item, charge_type);
                 spinner.setAdapter(charge_type_adapter);
 
             }
@@ -134,7 +134,7 @@ public class AddBills extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
 
 
