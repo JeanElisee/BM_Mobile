@@ -96,7 +96,13 @@ public class SelectBuilding extends AppCompatActivity {
 
 //                        Toast.makeText(SelectBuilding.this, building.getName(), Toast.LENGTH_LONG).show();
 
+//                        Just to pass the no of floor
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("no_of_floor", building.getNoFloor());
+                        bundle.putInt("building_id", building.getId());
+
                         Intent intent = new Intent(SelectBuilding.this, SelectHouse.class);
+                        intent.putExtras(bundle);
                         startActivity(intent);
                     }
                 });
