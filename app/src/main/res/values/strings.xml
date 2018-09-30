@@ -21,5 +21,9 @@
     <string name="diagrams">Diagrams</string>
     <string name="owner_photo">Owner Photo</string>
     <string name="place_holder">Place holder</string>
+    <string name="rent_amount">Rent Amount</string>
+    <string name="door_no">Door No</string>
+    <string name="deposit">Deposit</string>
+    <string name="floor_number">Floor Number</string>
 
 </resources>

@@ -1,81 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     android:layout_marginTop="20dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".SelectHouse">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColor"
-            android:text="Floor  Number"/>
+            android:text="@string/floor_number"
+            android:textColor="@color/textColor" />
 
         <Spinner
             android:id="@+id/floor_num_spinner"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="15dp"
-        card_view:cardElevation="12dp"
-        card_view:cardCornerRadius="10dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/house"
-                android:padding="4dp" />
-
-
-            <TextView
-                android:id="@+id/textViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000"
-                android:layout_toEndOf="@id/imageView" />
-            <TextView
-                android:id="@+id/textViewFloor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="floor"
-                android:layout_below="@+id/textViewTitle"
-                android:layout_toRightOf="@id/imageView"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000"
-                android:layout_toEndOf="@id/imageView" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

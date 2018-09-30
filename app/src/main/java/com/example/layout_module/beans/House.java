@@ -12,13 +12,11 @@ public class House {
     private int occupationType;
     private Building building;
     private HouseType houseType;
-    private List<Charge> charges;
 
     public House() {
     }
 
-    public House(int id, String doorNo, String floorNo, String rentAmount, String deposit, int occupationType, Building building, HouseType houseType, List<Charge> charges) {
-        super();
+    public House(int id, String doorNo, String floorNo, String rentAmount, String deposit, int occupationType, Building building, HouseType houseType) {
         this.id = id;
         this.doorNo = doorNo;
         this.floorNo = floorNo;
@@ -27,7 +25,6 @@ public class House {
         this.occupationType = occupationType;
         this.building = building;
         this.houseType = houseType;
-        this.charges = charges;
     }
 
     public int getId() {
@@ -94,14 +91,6 @@ public class House {
         this.houseType = houseType;
     }
 
-    public List<Charge> getCharges() {
-        return charges;
-    }
-
-    public void setCharges(List<Charge> charges) {
-        this.charges = charges;
-    }
-
     @Override
     public String toString() {
         return "House{" +
@@ -113,7 +102,6 @@ public class House {
                 ", occupationType=" + occupationType +
                 ", building=" + building +
                 ", houseType=" + houseType +
-                ", charges=" + charges +
                 '}';
     }
 }

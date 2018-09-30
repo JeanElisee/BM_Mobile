@@ -51,6 +51,7 @@ public class SelectBuilding extends AppCompatActivity {
         // Get owner id from the session
         SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
         int user_id = sharedPreferences.getInt("user_id", 1);
+
         //Retrieve building according to the owner
         String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/building/find_by_owner_id/" + user_id;
         Log.d("", url);
