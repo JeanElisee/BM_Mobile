@@ -7,11 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class Actions extends AppCompatActivity {
-
     ImageView add;
+    public static final String PREF_ACTION = "action_to_be_done";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -36,28 +35,31 @@ public class Actions extends AppCompatActivity {
 
                 Log.d("Which activity :", activityToOpenNext);
 
+                SharedPreferences sharedPreferences_action = getSharedPreferences(PREF_ACTION, 0);
+                SharedPreferences.Editor editor_action = sharedPreferences_action.edit();
+
                 switch (activityToOpenNext) {
                     case "house":
-                        intent = new Intent(Actions.this, HouseDetails.class);
-                        //add_house.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    Toast.makeText(Actions.this, "" + sharedPreferences.getString("house", "house"), Toast.LENGTH_SHORT).show();
+                        intent = new Intent(Actions.this, AddHouse.class);
+                        editor_action.putString("action", "house");
                         break;
 
                     case "building":
                         intent = new Intent(Actions.this, AddBuildings.class);
-//                    Toast.makeText(Actions.this, "" + sharedPreferences.getString("building", "building"), Toast.LENGTH_SHORT).show();
+                        editor_action.putString("action", "building");
                         break;
 
                     case "bill":
                         intent = new Intent(Actions.this, AddBills.class);
-                        //add_house.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    Toast.makeText(Actions.this, "" + sharedPreferences.getString("house", "house"), Toast.LENGTH_SHORT).show();
+                        editor_action.putString("action", "bill");
                         break;
-                        
+
                     default:
                         intent = new Intent(Actions.this, AddTenant.class);
+                        editor_action.putString("action", "tenant");
                         break;
                 }
+                editor_action.apply();
                 startActivity(intent);
             }
         });

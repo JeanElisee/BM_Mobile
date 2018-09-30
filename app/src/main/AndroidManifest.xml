@@ -31,7 +31,7 @@
         <activity android:name=".SearchHouse"></activity>
         <activity android:name=".AddBuildings"></activity>
         <activity android:name=".EditProfile"></activity>
-        <activity android:name=".HouseDetails"></activity>
+        <activity android:name=".AddHouse"></activity>
         <activity android:name=".SearchBuilding"></activity>
         <activity android:name=".SelectBuilding"></activity>
         <activity android:name=".AddTenant"></activity>

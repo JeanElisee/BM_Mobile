@@ -45,6 +45,10 @@ public class SelectBuilding extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        SharedPreferences sharedPreferences_action = getSharedPreferences(Actions.PREF_ACTION, 0);
+        final String action = sharedPreferences_action.getString("action", "DEFAULT");
+//        Toast.makeText(SelectBuilding.this, "" + action, Toast.LENGTH_LONG).show();
+
 
         RequestQueue requestQueue = Volley.newRequestQueue(SelectBuilding.this);
 
@@ -54,8 +58,6 @@ public class SelectBuilding extends AppCompatActivity {
 
         //Retrieve building according to the owner
         String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/building/find_by_owner_id/" + user_id;
-        Log.d("", url);
-        Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -94,17 +96,19 @@ public class SelectBuilding extends AppCompatActivity {
                         editor.putString("building_address", building.getAddress());
                         editor.apply();
 
+                        if (action.equals("house")) {
+                            Intent intent = new Intent(SelectBuilding.this, SummaryActivity.class);
+                            startActivity(intent);
+                        } else {
+                            //                        Just to pass the no of floor
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("no_of_floor", building.getNoFloor());
+                            bundle.putInt("building_id", building.getId());
 
-//                        Toast.makeText(SelectBuilding.this, building.getName(), Toast.LENGTH_LONG).show();
-
-//                        Just to pass the no of floor
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("no_of_floor", building.getNoFloor());
-                        bundle.putInt("building_id", building.getId());
-
-                        Intent intent = new Intent(SelectBuilding.this, SelectHouse.class);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
+                            Intent intent = new Intent(SelectBuilding.this, SelectHouse.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
                     }
                 });
                 recyclerView.setAdapter(adapter);

@@ -80,8 +80,6 @@ public class SelectHouse extends AppCompatActivity {
                 RequestQueue requestQueue = Volley.newRequestQueue(SelectHouse.this);
                 // Retrieve charge type and store in the dropdown list
                 String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/house/find_per_floor/" + buildingId + "/" + spinner.getSelectedItemPosition();
-//                Log.d("", url);
-//                Toast.makeText(getApplicationContext(), url, Toast.LENGTH_SHORT).show();
                 JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -120,8 +118,6 @@ public class SelectHouse extends AppCompatActivity {
                                 editor.putString("house_rent_amount", house.getRentAmount());
                                 editor.putString("house_deposit", house.getDeposit());
                                 editor.apply();
-
-//                                Toast.makeText(getApplicationContext(), house.toString(), Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(SelectHouse.this, SummaryActivity.class);
                                 startActivity(intent);

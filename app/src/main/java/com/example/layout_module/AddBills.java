@@ -120,12 +120,6 @@ public class AddBills extends AppCompatActivity {
                 editor.apply();
 
                 Intent intent = new Intent(AddBills.this, SelectBuilding.class);
-//                final SharedPreferences mPrefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-//                SharedPreferences.Editor prefsEditor = mPrefs.edit();
-//                Gson gson = new Gson();
-//                String json = gson.toJson(charge);
-//                prefsEditor.putString("chargeObject", json);
-//                prefsEditor.apply();
                 startActivity(intent);
             }
         });
