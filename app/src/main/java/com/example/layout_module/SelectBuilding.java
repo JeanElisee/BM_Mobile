@@ -1,5 +1,6 @@
 package com.example.layout_module;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,8 @@ public class SelectBuilding extends AppCompatActivity {
 
     String Tag = SelectBuilding.class.getSimpleName();
     List<Building> buildingList = new ArrayList<>();
+
+    public static final String PREF_NAME = "building_info";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,26 @@ public class SelectBuilding extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                CardAdapter adapter = new CardAdapter(SelectBuilding.this, buildingList);
+                CardAdapter adapter = new CardAdapter(SelectBuilding.this, buildingList, new CardAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(Building building) {
+                        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                        //Store information about the building clicked in the shared preference
+                        editor.putInt("building_id", building.getId());
+                        editor.putString("building_name", building.getName());
+                        editor.putInt("building_no_floor", building.getNoFloor());
+                        editor.putString("building_address", building.getAddress());
+                        editor.apply();
+
+
+//                        Toast.makeText(SelectBuilding.this, building.getName(), Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent(SelectBuilding.this, SelectHouse.class);
+                        startActivity(intent);
+                    }
+                });
                 recyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {

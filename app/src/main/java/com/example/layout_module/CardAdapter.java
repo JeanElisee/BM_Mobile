@@ -1,64 +1,50 @@
 package com.example.layout_module;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.layout_module.beans.Building;
 
 import java.util.List;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ProductViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     //this context we will use to inflate the layout
     private Context mCtx;
 
-    //we are storing all the products in a list
+    public interface OnItemClickListener {
+        void onItemClick(Building building);
+    }
+
+    //we are storing all the buildings in a list
     private List<Building> buildingList;
 
-    //getting the context and product list with constructor
-    public CardAdapter(Context mCtx, List<Building> buildingList) {
+    private final OnItemClickListener listener;
+
+    //getting the context and building list with constructor
+    public CardAdapter(Context mCtx, List<Building> buildingList, OnItemClickListener listener) {
         this.mCtx = mCtx;
         this.buildingList = buildingList;
+        this.listener = listener;
     }
 
     @Override
-    public ProductViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         final LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.card_data, null);
-        return new ProductViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ProductViewHolder holder, int position) {
-        //getting the product of the specified position
-        final Bundle bundle = new Bundle();
-        final Building building = buildingList.get(position);
-
-        //binding the data with the viewholder views
-        holder.txtBuildingName.setText(building.getName());
-        holder.txtBuildingNoOfFloor.setText(String.valueOf(building.getNoFloor()));
-        holder.txtBuildingAddress.setText(building.getAddress());
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(R.drawable.house));
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Log.d("", holder.txtBuildingName.getText().toString());
-//                bundle.putString("floornum", holder.txtBuildingNoOfFloor.getText().toString());
-
-//                Intent intent = new Intent(mCtx, SelectHouse.class);
-//                mCtx.startActivity(intent);
-            }
-        });
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        holder.bind(buildingList.get(position), listener);
+//        final Building building = buildingList.get(position);
     }
 
     @Override
@@ -66,17 +52,31 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ProductViewHol
         return buildingList.size();
     }
 
-    class ProductViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtBuildingName, txtBuildingNoOfFloor, txtBuildingAddress;
         ImageView imageView;
 
-        public ProductViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             txtBuildingName = itemView.findViewById(R.id.txtBuildingName);
             txtBuildingNoOfFloor = itemView.findViewById(R.id.txtBuildingNoOfFloor);
             txtBuildingAddress = itemView.findViewById(R.id.txtBuildingAddress);
             imageView = itemView.findViewById(R.id.imageView);
+        }
+
+        public void bind(final Building building, final OnItemClickListener listener) {
+            //binding the data with the viewholder views
+            txtBuildingName.setText(building.getName());
+            txtBuildingNoOfFloor.setText(String.valueOf(building.getNoFloor()));
+            txtBuildingAddress.setText(building.getAddress());
+            imageView.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.house));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(building);
+                }
+            });
         }
     }
 }
