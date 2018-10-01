@@ -1,7 +1,6 @@
 <resources>
     <string name="dashboard">Dashboard</string>
     <string name="tenantdashboard">Tenant Dashboard</string>
-    <string name="public_id">Public ID:</string>
     <string name="address">Address:</string>
     <string name="welcome">Welcome</string>
     <string name="para">See diagrams of how useful the application for you</string>
@@ -25,5 +24,14 @@
     <string name="door_no">Door No</string>
     <string name="deposit">Deposit</string>
     <string name="floor_number">Floor Number</string>
+    <string name="added_on">Added On</string>
+    <string name="last_date">Last date</string>
+    <string name="bill_amount">Bill Amount</string>
+    <string name="recent_bills">Recent bills</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="user_id">User ID</string>
 
 </resources>

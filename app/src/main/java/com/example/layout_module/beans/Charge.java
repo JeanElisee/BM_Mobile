@@ -73,8 +73,8 @@ public class Charge {
         this.paidOn = paidOn;
     }
 
-    public String getChargeType() {
-        return chargeType.getName();
+    public int getChargeType() {
+        return chargeType.getId();
     }
 
     public void setChargeType(ChargeType chargeType) {

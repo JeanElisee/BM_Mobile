@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -30,7 +31,7 @@ public class Login extends AppCompatActivity {
     RadioButton tenant, owner;
     EditText mailId, password;
     String email, password_text;
-    public static final String PREF_NAME="login_information";
+    public static final String PREF_NAME = "login_information";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +72,13 @@ public class Login extends AppCompatActivity {
     }
 
     public void JsonParse(String url, final String whichOne) {
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
                 if (whichOne.equals("tenant")) {
                     try {
 //                      ============< Take Tenant information >===============
@@ -99,14 +104,18 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-                        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        tenant.setTenantCountry(country);
+
+                        Log.d("", tenant.toString());
+                        Toast.makeText(getApplicationContext(), tenant.toString(), Toast.LENGTH_SHORT).show();
+
+
                         editor.putInt("user_id", tenant.getId());
+                        editor.putString("user_name", tenant.getFirstName() + " " + tenant.getLastName());
 
                         editor.apply();
 
                         Intent intent = new Intent(getApplicationContext(), TenantDashboard.class);
-
                         startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -136,10 +145,10 @@ public class Login extends AppCompatActivity {
                         country.setName(countryJson.getString("name"));
                         country.setIsd_code(countryJson.getString("isd_code"));
 
-                        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, 0);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt("user_id", owner.getId());
+                        owner.setOwnerCountry(country);
 
+                        editor.putInt("user_id", owner.getId());
+                        editor.putString("user_name", owner.getFirstName() + " " + owner.getLastName());
                         editor.apply();
 
                         Intent profile_activity = new Intent(getApplicationContext(), OwnerDashboard.class);

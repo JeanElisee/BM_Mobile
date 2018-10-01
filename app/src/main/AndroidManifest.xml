@@ -13,31 +13,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon, label">
-
-
-        <activity android:name=".OwnerDashboard"></activity>
-        <activity android:name=".TenantDashboard"></activity>
-        <activity android:name=".Actions"></activity>
+        <activity android:name=".OwnerDashboard" />
+        <activity android:name=".TenantDashboard" />
+        <activity android:name=".Actions" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BillPayment"></activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".RecentBills"></activity>
-        <activity android:name=".AddBills"></activity>
-        <activity android:name=".SearchHouse"></activity>
-        <activity android:name=".AddBuildings"></activity>
-        <activity android:name=".EditProfile"></activity>
-        <activity android:name=".AddHouse"></activity>
-        <activity android:name=".SearchBuilding"></activity>
-        <activity android:name=".SelectBuilding"></activity>
-        <activity android:name=".AddTenant"></activity>
-        <activity android:name=".TenantInfo"></activity>
+        <activity android:name=".BillPayment" />
+        <activity android:name=".Register" />
+        <activity android:name=".RecentBills" />
+        <activity android:name=".AddBills" />
+        <activity android:name=".SearchHouse" />
+        <activity android:name=".AddBuildings" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".AddHouse" />
+        <activity android:name=".SearchBuilding" />
+        <activity android:name=".SelectBuilding" />
+        <activity android:name=".AddTenant" />
+        <activity android:name=".TenantInfo" />
         <activity android:name=".SelectHouse" />
-        <activity android:name=".SummaryActivity"></activity>
+        <activity android:name=".SummaryActivity" />
+        <activity android:name=".ListOfBills" />
+        <activity android:name=".BillDetails" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" />
+        <activity android:name=".BillDetail"></activity>
     </application>
 
 </manifest>

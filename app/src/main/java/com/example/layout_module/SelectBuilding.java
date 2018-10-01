@@ -30,7 +30,6 @@ public class SelectBuilding extends AppCompatActivity {
     //the recyclerview
     RecyclerView recyclerView;
 
-    String Tag = SelectBuilding.class.getSimpleName();
     List<Building> buildingList = new ArrayList<>();
 
     public static final String PREF_NAME = "building_info";
