@@ -43,7 +43,6 @@ public class ListOfBills extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
         // Get tenant id from the session
         SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
         int user_id = sharedPreferences.getInt("user_id", 1);

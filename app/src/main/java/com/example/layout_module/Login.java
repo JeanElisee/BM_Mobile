@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Login.this, SummaryActivity.class);
+                Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
             }
         });
@@ -105,10 +105,6 @@ public class Login extends AppCompatActivity {
                         country.setIsd_code(countryJson.getString("isd_code"));
 
                         tenant.setTenantCountry(country);
-
-                        Log.d("", tenant.toString());
-                        Toast.makeText(getApplicationContext(), tenant.toString(), Toast.LENGTH_SHORT).show();
-
 
                         editor.putInt("user_id", tenant.getId());
                         editor.putString("user_name", tenant.getFirstName() + " " + tenant.getLastName());

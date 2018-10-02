@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import com.example.layout_module.beans.ChargeType;
 import com.example.layout_module.beans.House;
 import com.example.layout_module.beans.HouseType;
 import com.example.layout_module.beans.LinkToServer;
+import com.example.layout_module.beans.Occupy;
+import com.example.layout_module.beans.Tenant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,6 +37,7 @@ import java.util.Map;
 public class SummaryActivity extends AppCompatActivity {
 
     TextView textView1, textView2, textView3;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +46,28 @@ public class SummaryActivity extends AppCompatActivity {
         textView1 = findViewById(R.id.txtCharge);
         textView2 = findViewById(R.id.building);
         textView3 = findViewById(R.id.house);
+        button = findViewById(R.id.button);
 
         SharedPreferences sharedPreferences_action = getSharedPreferences(Actions.PREF_ACTION, 0);
-        String action = sharedPreferences_action.getString("action", "DEFAULT");
+        final String action = sharedPreferences_action.getString("action", "DEFAULT");
 
-        if (action.equals("bill")) {
-            saveBill();
-        } else if (action.equals("house")) {
-            saveHouse();
-        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (action) {
+                    case "bill":
+                        saveBill();
+                        break;
+                    case "house":
+                        saveHouse();
+                        break;
+                    case "tenant":
+                        saveTenant();
+                        break;
+                }
+            }
+        });
+
 
     }
 
@@ -150,6 +168,58 @@ public class SummaryActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Error", error.toString());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    private void saveTenant() {
+        SharedPreferences sharedPreferences_tenant = getSharedPreferences(AddTenant.PREF_NAME, 0);
+        Tenant tenant = new Tenant();
+        tenant.setId(sharedPreferences_tenant.getInt("tenant_id", 1));
+
+        SharedPreferences sharedPreferences_house = getSharedPreferences(SelectHouse.PREF_NAME, 0);
+        House house = new House();
+        house.setId(sharedPreferences_house.getInt("house_id", 1));
+
+        Occupy occupy = new Occupy();
+        occupy.setTenant(tenant);
+        occupy.setHouse(house);
+
+        Gson gson = new GsonBuilder().create();
+        String jsonFromObject = gson.toJson(occupy);
+        Log.d("JSON", jsonFromObject);
+
+        Toast.makeText(SummaryActivity.this, jsonFromObject, Toast.LENGTH_SHORT).show();
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            //Conversion to be verified
+            jsonObject = new JSONObject(jsonFromObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/occupy/save";
+        Log.d("", url);
+        RequestQueue requestQueue = Volley.newRequestQueue(SummaryActivity.this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(SummaryActivity.this, "Successfully added.", Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Error", error.toString());
+//                Toast.makeText(SummaryActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
