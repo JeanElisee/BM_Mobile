@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="@dimen/textSize"
+            android:layout_marginTop="100dp"
+            android:textStyle="normal"
+            android:textColor="@color/white"
+            android:text="Login"/>
+        
+        <EditText
+            android:id="@+id/email_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#32cccccc"
+            android:padding="10dp"
+            android:hint="E-mail address"
+            android:layout_margin="10dp"/>
+        <EditText
+            android:id="@+id/password_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#32cccccc"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:layout_margin="10dp"/>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/tenant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:padding="5dp"
+                android:text="Tenant"/>
+            <RadioButton
+                android:id="@+id/owner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:text="Owner"/>
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#22cccccc"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:gravity="center_horizontal"
+            android:text="Login Now"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:gravity="center_horizontal"
+            android:text="Forget your password?"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="60dp"
+            android:background="@color/white"/>
+
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="normal"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="bottom|end"
+            android:text="Create an Account ? Sign Up"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
