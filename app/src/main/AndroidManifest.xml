@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon, label">
-        <activity android:name=".OwnerDashboard" />
         <activity android:name=".TenantDashboard" />
         <activity android:name=".Actions" />
         <activity android:name=".Login">
@@ -36,14 +35,20 @@
         <activity android:name=".SelectHouse" />
         <activity android:name=".SummaryActivity" />
         <activity android:name=".ListOfBills" />
+        *
         <activity android:name=".BillDetail" />
-        <activity android:name=".InquiryActivity">
+        <activity android:name=".InquiryActivity"></activity>
+        <activity
+            android:name=".OwnerDashboard"
+            android:label="@string/title_activity_owner_dashboard1"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NoticeActivity"></activity>
     </application>
 
 </manifest>

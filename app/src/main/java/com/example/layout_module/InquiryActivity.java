@@ -56,9 +56,6 @@ public class InquiryActivity extends AppCompatActivity {
 
                 inquiry.setObject(subject.getText().toString());
                 inquiry.setMessage(message.getText().toString());
-                //inquiry.setActive(true);
-                //inquiry.setSubmissionDate(date);
-
                 tenant.setId(5);
                 inquiry.setTenant(tenant);
 
