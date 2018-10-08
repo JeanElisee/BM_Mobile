@@ -34,17 +34,19 @@ public class NoticeActivity extends AppCompatActivity {
 
     //Notice Activity
     Button notice;
-    EditText subject,message;
+    EditText subject, message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
-        notice=(Button)findViewById(R.id.notice);
-        subject=findViewById(R.id.subject);
-        message=findViewById(R.id.message);
+        notice = (Button) findViewById(R.id.notice);
+        subject = findViewById(R.id.subject);
+        message = findViewById(R.id.message);
+
         SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
         final int owner_id = sharedPreferences.getInt("user_id", 1);
+
         notice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,11 +78,9 @@ public class NoticeActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
-//                        Toast.makeText(NoticeActivity.this, "Not inserted", Toast.LENGTH_LONG).show();
+                        Toast.makeText(NoticeActivity.this, "Not inserted", Toast.LENGTH_LONG).show();
                     }
                 });
-
                 requestQueue.add(jsonObjectRequest);
             }
         });

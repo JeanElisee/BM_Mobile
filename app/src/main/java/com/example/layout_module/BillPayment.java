@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,12 +23,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class BillPayment extends AppCompatActivity {
+    Button backtoDash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_payment);
-
+        backtoDash = findViewById(R.id.gotodash);
         //Get the bundle
         final Bundle bundle = getIntent().getExtras();
         assert bundle != null;
@@ -37,7 +40,7 @@ public class BillPayment extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Toast.makeText(getApplicationContext(), "" + "Bill N0 " + billID + " successfully paid.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "" + getString(R.string.bill_no) + billID + getString(R.string.succesfully_paid), Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -48,5 +51,13 @@ public class BillPayment extends AppCompatActivity {
         );
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonObjectRequest);
+
+        backtoDash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BillPayment.this, TenantDashboard.class);
+                startActivity(intent);
+            }
+        });
     }
 }

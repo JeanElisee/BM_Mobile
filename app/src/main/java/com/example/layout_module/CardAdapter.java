@@ -68,12 +68,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         public void bind(final Building building, final OnItemClickListener listener) {
             //binding the data with the viewholder views
             txtBuildingName.setText(building.getName());
-            txtBuildingNoOfFloor.setText(String.valueOf(building.getNoFloor()+" Floors"));
+            txtBuildingNoOfFloor.setText(String.valueOf(building.getNoFloor() + " Floors"));
             txtBuildingAddress.setText(building.getAddress());
             imageView.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.house));
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     listener.onItemClick(building);
                 }
             });

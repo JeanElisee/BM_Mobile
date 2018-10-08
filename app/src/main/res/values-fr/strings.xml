@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dashboard">Tableau de bord</string>
+    <string name="tenantdashboard">Tableau de bord de l\'occupant</string>
+    <string name="address">Addresse</string>
+    <string name="welcome">Bienvenue</string>
+    <string name="para">Voir un diagram montrant l\'utilitee de l\'application</string>
+    <string name="name">Nom</string>
+    <string name="no_of_floor">No d\'étages</string>
+    <string name="add">Ajouter</string>
+    <string name="cancel">Annuler</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="buildings">Immeuble</string>
+    <string name="bills">Factures</string>
+    <string name="tenant">Occupant</string>
+    <string name="house">Maison</string>
+    <string name="diagrams">Diagramme</string>
+    <string name="owner_photo">Photo de propriétaire</string>
+    <string name="rent_amount">Montant du loyer</string>
+    <string name="door_no">No de porte</string>
+    <string name="deposit">Caution</string>
+    <string name="floor_number">Etage</string>
+    <string name="added_on">Ajouter le</string>
+    <string name="last_date">Dernier delai</string>
+    <string name="bill_amount">Montant de la facture</string>
+    <string name="recent_bills">Factures recentes</string>
+    <string name="title_activity_main">Activity Principale</string>
+    <string name="title_home">Acceuil</string>
+    <string name="title_dashboard">Tableau de bord</string>
+    <string name="user_id">ID de l\'utilisateur</string>
+    <string name="title_activity_owner_dashboard">Tableau de bord du proprietaire</string>
+    <string name="action_settings">Parametre</string>
+    <string name="bill_added_on">Facture ajouter le</string>
+    <string name="bill_no">Numero de facture</string>
+    <string name="succesfully_paid">Payé</string>
+    <string name="ten_digits">Le numéro de téléphone doit avoir 10 chiffres</string>
+    <string name="successfully_registered">Ajouté</string>
+    <string name="billpaid">Facture payer vous aller etre rediriger</string>
+</resources>

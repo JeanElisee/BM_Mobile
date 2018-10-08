@@ -52,7 +52,7 @@ public class ListOfBills extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(ListOfBills.this);
         //Retrieve building according to the owner
         String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "charge/pending/" + user_id;
-        Log.d("", url);
+//        Log.d("", url);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

@@ -158,7 +158,7 @@ public class Register extends AppCompatActivity {
 
                 Gson gson = new GsonBuilder().create();
                 String jsonFromObject = gson.toJson(tenant);
-                Log.d("JSON", jsonFromObject);
+//                Log.d("JSON", jsonFromObject);
 
                 JSONObject jsonObject = new JSONObject();
                 try {

@@ -43,8 +43,10 @@ public class InquiryActivity extends AppCompatActivity {
         save = findViewById(R.id.save);
         subject = findViewById(R.id.subject);
         message = findViewById(R.id.message);
+
         SharedPreferences sharedPreferences = getSharedPreferences(Login.PREF_NAME, 0);
         Date current_date = Calendar.getInstance().getTime();
+
         final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         final String date = df.format(current_date);
 

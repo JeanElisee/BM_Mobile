@@ -9,57 +9,13 @@
     tools:context=".SummaryActivity">
 
     <TextView
-        android:id="@+id/txtCharge"
+        android:id="@+id/txtSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:layout_margin="20dp"
         android:textColor="@color/textColor"
         android:text="Charge"/>
-
-    <TextView
-        android:id="@+id/txtChargeAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_margin="20dp"
-        android:textColor="@color/textColor"
-        android:text="Amount"/>
-    <TextView
-        android:id="@+id/txtLastDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_margin="20dp"
-        android:textColor="@color/textColor"
-        android:text="Last Date"/>
-
-    <TextView
-        android:id="@+id/txtChargeType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_margin="20dp"
-        android:textColor="@color/textColor"
-        android:text="Last Date"/>
-
-    <TextView
-        android:id="@+id/building"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:layout_margin="20dp"
-        android:textColor="@color/textColor"
-        android:text="Building"
-        />
-    <TextView
-        android:id="@+id/house"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:textSize="25sp"
-        android:textColor="@color/textColor"
-        android:text="House"/>
 
     <Button
         android:id="@+id/button"
@@ -68,4 +24,10 @@
         android:layout_margin="20dp"
         android:layout_gravity="center"
         android:text="SEnd"/>
+    <Button
+        android:id="@+id/gotodash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="BAck to dashboard"/>
 </LinearLayout>

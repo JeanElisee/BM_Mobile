@@ -81,7 +81,6 @@ public class AddBills extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);

@@ -25,10 +25,8 @@ public class BillDetail extends AppCompatActivity {
         txtBillLastDate = findViewById(R.id.txtBillsLastDate);
         payNow = findViewById(R.id.btnPayNow);
 
-
         //Get the bundle
         final Bundle bundle = getIntent().getExtras();
-
 
         Charge charge = new Charge();
         assert bundle != null;

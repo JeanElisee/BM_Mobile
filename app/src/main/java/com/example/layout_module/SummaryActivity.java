@@ -1,5 +1,6 @@
 package com.example.layout_module;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,20 +37,21 @@ import java.util.Map;
 
 public class SummaryActivity extends AppCompatActivity {
 
-    TextView textView1, textView2, textView3;
-    Button button;
+    TextView txtSummary;
+    Button button,backtoDash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
-        textView1 = findViewById(R.id.txtCharge);
-        textView2 = findViewById(R.id.building);
-        textView3 = findViewById(R.id.house);
+        txtSummary = findViewById(R.id.txtSummary);
         button = findViewById(R.id.button);
+        backtoDash = findViewById(R.id.gotodash);
 
         SharedPreferences sharedPreferences_action = getSharedPreferences(Actions.PREF_ACTION, 0);
         final String action = sharedPreferences_action.getString("action", "DEFAULT");
+
+        txtSummary.setText("Do you want to add that " + action +" ?");
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +70,13 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
-
+backtoDash.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(SummaryActivity.this,OwnerDashboard.class);
+        startActivity(intent);
+    }
+});
     }
 
     private void saveBill() {
@@ -91,7 +99,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         Gson gson = new GsonBuilder().create();
         String jsonFromObject = gson.toJson(charge);
-        Log.d("JSON", jsonFromObject);
+//        Log.d("JSON", jsonFromObject);
 
         JSONObject jsonObject = new JSONObject();
         try {
@@ -146,7 +154,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         Gson gson = new GsonBuilder().create();
         String jsonFromObject = gson.toJson(house);
-        Log.d("JSON", jsonFromObject);
+//        Log.d("JSON", jsonFromObject);
 
         JSONObject jsonObject = new JSONObject();
         try {
@@ -195,7 +203,7 @@ public class SummaryActivity extends AppCompatActivity {
 
         Gson gson = new GsonBuilder().create();
         String jsonFromObject = gson.toJson(occupy);
-        Log.d("JSON", jsonFromObject);
+//        Log.d("JSON", jsonFromObject);
 
         Toast.makeText(SummaryActivity.this, jsonFromObject, Toast.LENGTH_SHORT).show();
 
@@ -208,7 +216,7 @@ public class SummaryActivity extends AppCompatActivity {
         }
 
         String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "occupy/save";
-        Log.d("", url);
+//        Log.d("", url);
         RequestQueue requestQueue = Volley.newRequestQueue(SummaryActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
@@ -218,8 +226,8 @@ public class SummaryActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Error", error.toString());
-//                Toast.makeText(SummaryActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+//                Log.d("Error", error.toString());
+                Toast.makeText(SummaryActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

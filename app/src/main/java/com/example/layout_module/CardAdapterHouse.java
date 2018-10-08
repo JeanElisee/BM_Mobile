@@ -73,7 +73,8 @@ public class CardAdapterHouse extends RecyclerView.Adapter<CardAdapterHouse.View
             imageView.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.house));
 
             itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+                @Override
+                public void onClick(View v) {
                     listener.onItemClick(house);
                 }
             });

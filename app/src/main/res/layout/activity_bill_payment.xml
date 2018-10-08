@@ -25,13 +25,13 @@
         android:layout_marginTop="150dp"
         android:gravity="center_horizontal"
         android:text="@string/billpaid"/>
-    <TextView
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/gotodash"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/textColor"
-        android:textSize="@dimen/textSize"
-        android:gravity="center_horizontal"
-        android:text="5 sec"/>
+        android:layout_gravity="center_horizontal"
+        android:text="BAck to dashboard"/>
 
 </LinearLayout>
 

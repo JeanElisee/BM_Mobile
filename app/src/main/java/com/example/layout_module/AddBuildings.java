@@ -85,7 +85,7 @@ public class AddBuildings extends AppCompatActivity {
                 JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(AddBuildings.this, "Successfully Registered.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddBuildings.this, getString(R.string.successfully_registered), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override

@@ -26,7 +26,6 @@ public class Actions extends AppCompatActivity {
 //                String activity = sharedPreferences.getString("activity", "");
                 //Get the bundle
                 Bundle bundle = getIntent().getExtras();
-
                 Intent intent = new Intent();
 
 //Extract the data…

@@ -13,17 +13,15 @@ class CustomPagerAdapter extends PagerAdapter {
     private Context mContext;
 
     public CustomPagerAdapter(Context context) {
-
-        mContext=context;
+        mContext = context;
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-
-        Model model=Model.values()[position];
-        LayoutInflater layoutInflater=LayoutInflater.from(mContext);
-        ViewGroup layout= (ViewGroup) layoutInflater.inflate(model.getLayoutResId(),container,false);
+        Model model = Model.values()[position];
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        ViewGroup layout = (ViewGroup) layoutInflater.inflate(model.getLayoutResId(), container, false);
         container.addView(layout);
 
         return layout;
@@ -41,6 +39,6 @@ class CustomPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return view==o;
+        return view == o;
     }
 }

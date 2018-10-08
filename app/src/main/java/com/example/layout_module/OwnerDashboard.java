@@ -129,7 +129,8 @@ public class OwnerDashboard extends AppCompatActivity
         } else if (id == R.id.edit_profile) {
 
         } else if (id == R.id.setting) {
-
+            Intent intent = new Intent(OwnerDashboard.this, Login.class);
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

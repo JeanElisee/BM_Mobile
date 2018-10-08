@@ -41,7 +41,7 @@ public class AddTenant extends AppCompatActivity {
                 final String tenantPhoneNumber = txtPhoneNum.getText().toString();
 
                 if (tenantPhoneNumber.length() < 10 || tenantPhoneNumber.length() > 10) {
-                    Toast.makeText(getApplicationContext(), "Phone Number Should Have 10 digits", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.ten_digits), Toast.LENGTH_SHORT).show();
                 } else {
                     final String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/tenant/get_by_phone/" + tenantPhoneNumber;
                     JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
