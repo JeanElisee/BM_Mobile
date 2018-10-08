@@ -67,9 +67,9 @@ public class CardAdapterCharge extends RecyclerView.Adapter<CardAdapterCharge.Vi
 
         public void bind(final Charge charge, final OnItemClickListener listener) {
             //binding the data with the viewholder views
-            txtBillAmount.setText(charge.getAmount());
-            txtBillLastDate.setText(charge.getLastDate());
-            txtBillAddedOn.setText(charge.getAddedOn());
+            txtBillAmount.setText("Bill Amount: "+charge.getAmount());
+            txtBillLastDate.setText("Last Date: "+charge.getLastDate());
+            txtBillAddedOn.setText("Bill Added On"+charge.getAddedOn());
             imageView.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.house));
 
             itemView.setOnClickListener(new View.OnClickListener() {

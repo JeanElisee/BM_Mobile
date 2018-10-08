@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon, label">
-        <activity android:name=".OwnerDashboard" />
         <activity android:name=".TenantDashboard" />
         <activity android:name=".Actions" />
         <activity android:name=".Login">
@@ -27,22 +26,29 @@
         <activity android:name=".Register" />
         <activity android:name=".RecentBills" />
         <activity android:name=".AddBills" />
-        <activity android:name=".SearchHouse" />
         <activity android:name=".AddBuildings" />
         <activity android:name=".EditProfile" />
         <activity android:name=".AddHouse" />
-        <activity android:name=".SearchBuilding" />
         <activity android:name=".SelectBuilding" />
         <activity android:name=".AddTenant" />
         <activity android:name=".TenantInfo" />
         <activity android:name=".SelectHouse" />
         <activity android:name=".SummaryActivity" />
         <activity android:name=".ListOfBills" />
-        <activity android:name=".BillDetails" />
+        *
+        <activity android:name=".BillDetail" />
+        <activity android:name=".InquiryActivity" />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
-        <activity android:name=".BillDetail"></activity>
+            android:name=".OwnerDashboard"
+            android:label="@string/title_activity_owner_dashboard"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NoticeActivity" />
     </application>
 
 </manifest>

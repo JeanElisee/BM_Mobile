@@ -6,7 +6,7 @@ public final class LinkToServer {
 //       private static final String IP_ADDRESS = "192.168.0.14";
 
 //      ======< My HOME >==========
-       private static final String IP_ADDRESS = "192.168.100.254"; //Raspberry Pi
+       private static final String IP_ADDRESS = "192.168.100.71"; //Raspberry Pi
 
 //        ======< COLLEGE >=========
 //      private static final String IP_ADDRESS = "10.0.11.47";

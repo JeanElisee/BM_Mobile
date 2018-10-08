@@ -101,7 +101,7 @@ public class SummaryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/charge/save";
+        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "charge/save";
 
         RequestQueue requestQueue = Volley.newRequestQueue(SummaryActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
@@ -134,7 +134,7 @@ public class SummaryActivity extends AppCompatActivity {
         house.setDeposit(sharedPreferences_house.getString("h_deposit", "DEFAULT"));
 
         HouseType houseType = new HouseType();
-        houseType.setId(sharedPreferences_house.getInt("h_type", 1));
+        houseType.setId(sharedPreferences_house.getInt("houseType", 1));
 
         house.setHouseType(houseType);
 
@@ -207,7 +207,7 @@ public class SummaryActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "/occupy/save";
+        String url = LinkToServer.LinkDetails.SERVER_ADDRESS + "occupy/save";
         Log.d("", url);
         RequestQueue requestQueue = Volley.newRequestQueue(SummaryActivity.this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {

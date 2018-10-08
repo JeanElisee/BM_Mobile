@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 public class TenantDashboard extends AppCompatActivity implements View.OnClickListener {
     ImageView profile;
-    FrameLayout bills, sample1, sample2, inquiry;
+    FrameLayout bills, inquiry;
     TextView txtUserName, txtUserId;
 
     @Override
@@ -29,15 +29,10 @@ public class TenantDashboard extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_dashboard);
         bills = (FrameLayout) findViewById(R.id.image1);
-        sample1 = (FrameLayout) findViewById(R.id.image2);
-        sample2 = (FrameLayout) findViewById(R.id.image3);
-        inquiry = (FrameLayout) findViewById(R.id.image4);
+        inquiry = (FrameLayout) findViewById(R.id.image2);
         txtUserName = findViewById(R.id.txtUserName);
         txtUserId = findViewById(R.id.txtUserId);
-
         bills.setOnClickListener(this);
-        sample1.setOnClickListener(this);
-        sample2.setOnClickListener(this);
         inquiry.setOnClickListener(this);
 
         // Get tenant id from the session
@@ -46,13 +41,20 @@ public class TenantDashboard extends AppCompatActivity implements View.OnClickLi
         String user_name = sharedPreferences.getString("user_name", "DEFAULT");
         txtUserName.setText(user_name);
         txtUserId.setText(String.valueOf(user_id));
-
-
     }
 
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(this, ListOfBills.class);
-        startActivity(i);
+        if(view.getId()==R.id.image1)
+        {
+            Intent i = new Intent(this, ListOfBills.class);
+            startActivity(i);
+        }
+        else if(view.getId()==R.id.image2)
+        {
+            Intent i = new Intent(this, InquiryActivity.class);
+            startActivity(i);
+        }
+
     }
 }
